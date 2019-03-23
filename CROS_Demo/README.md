@@ -1,7 +1,5 @@
 ## UseAge
 ```
-git clone git@github.com:LongJinCen/CROS_Demo.git
-
 cd CROS_Demo
 
 npm install
