@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>百度首页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+      padding: 0px;
+    }
+    #input {
+      width: 537px;
+      height: 36px;
+      float: left;
+      font-size: 16px;
+    }
+    #submit {
+      height: 40px;
+      width: 104px;
+      color: #000;
+      font-size: 16px;
+      float: left;
+    }
+    #container {
+      margin-left: 28%;
+      margin-top: 6%;
+    }
+    #img {
+      width: 641px;
+      height: 181px;
+      position: relative;
+    }
+    img {
+      position: absolute;
+      top: 60%;
+      left: 40%;
+    }
+    ul {
+      clear: both;
+      list-style-type: none;
+      background-color: #ffffff;
+      width: 537px;
+    }
+  
+    li {
+      padding: 3px;
+    }
+    li:hover {
+      cursor: pointer;
+      background-color: #ccc
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="container">
+    <div id="img">
+      <img src=" https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_ca79a146.png"/>
+    </div>
+    <input type="text" id="input"/>
+    <button id="submit">百度一下</button>
+    <ul></ul>
+  </div>
+
+    <script>
+      var timer = null
+      var domInput = document.getElementById('input')
+      var domul = document.getElementsByTagName('ul')[0]
+      domInput.oninput = function (e) {
+        clearTimeout(timer)
+        timer = setTimeout(function () {
+          var domScript = document.createElement('script')
+          domScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+ e.target.value +'&cb=jsonpCb'
+          document.body.appendChild(domScript)
+        }, 100)
+      }
+      function jsonpCb (data) {
+        let result = ''
+        data.s.forEach(element => {
+          result += '<li><a href= ' + 'https://www.baidu.com/s?wd=' + element + '>' + element +'</a></li>'
+        });
+        domul.innerHTML = result
+      }
+    </script>
+</body>
+</html>

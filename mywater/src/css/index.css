@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#container {
+  width: 60%;
+  margin: 0 auto;
+  
+}
+#container ul {
+  width: 100%;
+}
+#container ul li {
+  width: 25%;
+  float: left;
+}
+.warpper {
+  padding: 5px;
+  border: 1px solid;
+  margin: 5px;
+}
+.warpper img {
+  width: 100%;
+}
+.warpper p {
+  width: 100%;
+  overflow: hidden;
+}
+#loading {
+  width: 25%;
+  font-size: 30px;
+  margin: 0 auto;
+  color: #ccc;
+}
