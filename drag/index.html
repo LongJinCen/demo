@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽小方块</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            cursor: pointer;
+        }
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            width: 1000px;
+            height: 1000px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+</body>
+    <script>
+        var box = document.getElementById('box'),
+            topDistance = 0,
+            leftDistance = 0,
+            isDown = false
+        var body = document.getElementsByTagName('body')[0]
+        box.onmousedown = function (e) {
+            topDistance = e.clientX - box.offsetLeft
+            leftDistance = e.clientY - box.offsetTop
+            isDown = true
+        }
+        body.onmousemove = function (e) {
+            if(!isDown) return
+            box.style.left = e.clientX - leftDistance + 'px'
+            box.style.top = e.clientY - topDistance + 'px'
+        }
+        box.onmouseup = function () {
+            isDown = false
+        }
+    </script>
+</html>
