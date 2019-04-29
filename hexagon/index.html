@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正六边形</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        #box {
+            width: 173.2px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            margin: 100px;
+        }
+        #box::before {
+            content: '';
+            display: block;
+            border-top: 0px solid transparent;
+            border-bottom: 50px solid red;
+            border-left: 86.6px solid transparent;
+            border-right: 86.6px solid transparent;
+            position: absolute;
+            top: -50px;
+        }
+        #box::after {
+            content: '';
+            display: block;
+            border-top: 50px solid red;
+            border-bottom: 0px solid transparent;
+            border-left: 86.6px solid transparent;
+            border-right: 86.6px solid transparent;
+            position: absolute;
+            bottom: -50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+</body>
+</html>
