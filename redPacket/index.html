@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>红包雨</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .container {
+            width: 300px;
+            height: 500px;
+            border: 1px solid #666666;
+            margin: 100px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .red-packet {
+            width: 30px;
+            height: 50px;
+            background-color: red;
+            display: inline-block;
+            /* transform: rotate(30deg); */
+            position: absolute;
+            top: -50px;
+        }
+        @keyframes goDown {
+            from {
+                top: -50px;
+            }
+            to {
+                top: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container"></div>
+    <script>
+        var container = document.getElementsByClassName('container')[0]
+        setInterval(function() {
+            add()
+        }, 500)
+
+        function add() {
+            var redPacket = document.createElement('div')
+            redPacket.className = 'red-packet'
+            redPacket.style.transform = 'rotate(' +  (Math.random() * 600 - 30) + 'deg)'
+            redPacket.style.left = Math.random() * 300 + 'px'
+            redPacket.style.animation = 'goDown 3s'
+            redPacket.addEventListener('animationend', function(e) {
+                console.log('enter')
+                e.target.remove()
+            })
+            container.appendChild(redPacket)
+        }
+    </script>
+</body>
+</html>
