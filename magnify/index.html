@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>淘宝放大镜</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        #warpper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+        .product {
+            cursor: move;
+            width: 100%;
+            height: 100%;
+        }
+        .magnify {
+            width: 200px;
+            height: 200px;
+            opacity: 0.6;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background-color: aliceblue;
+        }
+        .showmagnify {
+            width: 400px;
+            height: 400px;
+            overflow: hidden;
+            position: absolute;
+            left: 105%;
+            top: 0px;
+        }
+        .showmagnify img {
+            width: 200%;
+            height: 200%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="warpper">
+        <div class="product">
+            <img src="./鞋.jpg" alt="">
+            <div class="magnify">
+
+            </div>
+        </div>
+        <div class="showmagnify">
+            <img src="./鞋.jpg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    //   一定要注意选中的区域为容器的大小除以放大倍数 如图片宽高为400 放大倍数为2 那么放大镜的宽高应为200
+    var warpper = document.getElementById('warpper'),
+        product = document.getElementsByClassName('product')[0],
+        magnify = document.getElementsByClassName('magnify')[0],
+        showmagnify = document.getElementsByClassName('showmagnify')[0];
+    var img = showmagnify.querySelector('img')
+    var mag_w = magnify.offsetWidth,
+        mag_h = magnify.offsetHeight,
+        mag_l = 0,
+        mag_t = 0,
+        wp_l = warpper.offsetLeft,
+        wp_t = warpper.offsetTop,
+        wp_w = warpper.offsetWidth,
+        wp_h = warpper.offsetHeight;
+    product.onmousemove = function (e) {
+        magnify.style.visibility = 'visible'
+        img.style.display = 'block'
+        mag_l = e.clientX - mag_w/2 - wp_l
+        mag_t = e.clientY - mag_h/2 - wp_t
+        mag_l = e.clientX > mag_w/2 ? mag_l : 0
+        mag_l = (e.clientX + mag_w/2) > wp_w ? wp_w - mag_w : mag_l
+        mag_t = e.clientY > mag_h/2 ? mag_t : 0
+        mag_t = (e.clientY + mag_h/2) > wp_h ? wp_h - mag_h : mag_t
+        magnify.style.left = mag_l + 'px'
+        magnify.style.top = mag_t + 'px'
+        img.style.marginLeft = '-' + mag_l * 2 + 'px'
+        img.style.marginTop = '-' + mag_t * 2 + 'px'
+    }
+    product.onmouseleave = function () {
+        magnify.style.visibility = 'hidden'
+    }
+</script>
+</html>
