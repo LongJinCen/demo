@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>边框三角形</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        #frame {
+            border: 1px solid red;
+            width: 200px;
+            height: 100px;
+            margin: 100px;
+            position: relative;
+        }
+        #frame::before {
+            content: '';
+            display: block;
+            position: absolute;
+            border-top: 0px solid transparent;
+            border-bottom: 9px solid #ffffff;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            top: -8px;
+            left: 10px;
+            z-index: 10;
+        }
+        #frame::after {
+            content: '';
+            display: block;
+            position: absolute;
+            border-top: 0px solid transparent;
+            border-bottom: 10px solid red;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            top: -10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame"></div>
+</body>
+</html>
