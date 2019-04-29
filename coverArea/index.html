@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>覆盖面积计算</title>
+    <style>
+        * {
+            margin: 0px;
+            height: 0px;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+        }
+        #box1 {
+            background-color: red;
+            left: 0px;
+            top: 0px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        #box2 {
+            background-color: black;
+            left: 50%;
+            top: 50%;
+            margin-left: -50px;
+            margin-top: -50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+<script>
+    var box1 = document.getElementById('box1'),
+        topDistance1 = 0,
+        leftDistance1 = 0,
+        isDown1 = false;
+    var box1Width = box1.offsetWidth,
+        box1Height = box1.offsetHeight;
+    var body = document.getElementsByTagName('body')[0]
+    var box2 = document.getElementById('box2')
+    var topDistance2 = box2.offsetTop,
+        leftDistance2 = box2.offsetLeft,
+        box2Width = box2.offsetWidth,
+        box2Height = box2.offsetHeight;
+    var coverWidth = 0,
+        coverHeight = 0;
+    box1.onmousedown = function (e) {
+        topDistance1 = e.clientX - box1.offsetLeft
+        leftDistance1 = e.clientY - box1.offsetTop
+        isDown1 = true
+    }
+    body.onmousemove = function (e) {
+        if(!isDown1) return
+        if((box1Width + box1.offsetLeft > leftDistance2) && (box1.offsetLeft <= leftDistance2)) {
+            coverWidth = box1Width + box1.offsetLeft - leftDistance2
+        } else if ((box1Width + box1.offsetLeft > leftDistance2 + box2Width) && (box1.offsetWidth <= leftDistance2 + box2Width)) {
+            coverWidth = leftDistance2 + box2Width - box1.offsetLeft
+        }
+        if((box1Height + box1.offsetTop > topDistance2) && (box1.offsetTop <= topDistance2)) {
+            coverHeight = box1Height + box1.offsetTop - topDistance2
+        } else if ((box1Height + box1.offsetTop > topDistance2 + box2Height) && (box1.offsetTop <= topDistance2 + box2Height)) {
+            coverHeight = topDistance2 + box2Height - box1.offsetTop
+        }
+        box1.style.left = e.clientX - leftDistance1 + 'px'
+        box1.style.top = e.clientY - topDistance1 + 'px'
+        console.log(coverWidth, coverHeight)
+    }
+    box1.onmouseup = function () {
+        isDown1 = false
+    }
+</script>
+</html>
