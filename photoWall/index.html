@@ -4,9 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>照片墙</title>
+    <style>
+        * {
+            margin: 0px;
+            height: 0px;
+        }
+        html {
+            background-color: #7b7b7b;
+        }
+        #warpper {
+            width: 80%;
+            height: 500px;
+            margin: 50px auto;
+        }
+        .pic {
+            width: 500px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        .img {
+            width: 50px;
+            height: 50px;
+            float: left;
+        }
+        .button {
+            width: 100px;
+            height: 40px;
+            margin: 20px auto;
+            padding: 5px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 16px;
+            color: #6c6c6c;
+            background-color: #0fc;
+            border-radius: 5px;
+            margin: 0 auto;
+            cursor: pointer;
+            box-shadow: 2px 2px 3px #eee;
+            font-weight: bolder;
+        }
+    </style>
 </head>
 <body>
-    
+    <div id="warpper">
+        <div class="pic"></div>
+        <div class="button">点击查看效果</div>
+    </div>
+    <script>
+        var pic = document.getElementsByClassName('pic')[0],
+            button = document.getElementsByClassName('button')[0]
+
+        for (let index = 0; index < 50; index++) {
+            var img = new Image()
+            img.src = './img/' +  Math.floor(Math.random()*9) + '.jpg'
+            img.className = 'img'
+            pic.appendChild(img)
+        }
+        var imgs = document.getElementsByClassName('img'),
+            flag = true
+        button.onclick = function (e) {
+            if(!flag) return
+            flag = false
+            var len = imgs.length,
+                total = 0;
+            for (let index = 0; index < len; index++) {
+                (function (i) {
+                    setTimeout(function (){
+                        monition(imgs[i], '1s', function(){
+                            this.style.transform = 'scale(0)'
+                        }, function() {
+                            monition(this, '1s', function() {
+                                this.style.transform = 'scale(1)'
+                                this.style.opacity = '0'
+                            }, function() {
+                                total++
+                                if(total === len) {
+                                    show()
+                                }
+                            })
+                        })
+                    }, Math.random()*1000)
+                })(index)
+            }
+        }
+        function monition(dom, time, func, cb) {
+            dom.style.transition = time
+            func.call(dom)
+            var called = true
+            dom.addEventListener('transitionend', function() {
+                if(called)
+                    cb.call(dom)
+                called = false
+            })
+        }
+        function show() {
+            var len = imgs.length,
+                total = 0;
+            for(let i = 0; i < len; i++) {
+                (function(index){
+                    setTimeout(function(){
+                        monition(imgs[index], '2s', function(){
+                            // this.style.transform = 'rotateY(0deg) translateZ(' + Math.random() * 500 + 'px)'
+                            this.style.opacity = '1'
+                            // this.style.transform = 'rotateY(-360deg) translateZ(0)'
+                        }, function(){
+                            total++
+                            if(total === len) {
+                                flag = true
+                            }
+                        })
+                    }, Math.random()*1000)
+                })(i)
+            }
+        }
+    </script>
 </body>
 </html>
