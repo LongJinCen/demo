@@ -1,0 +1,186 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+.warpper {
+    width: 700px;
+    height: 500px;
+    margin: 30px auto;
+    border: 1px solid #333333;
+}
+
+.warpper ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.warpper ul li {
+    width: 200px;
+    height: 200px;
+    perspective: 600px;
+}
+
+.warpper .box {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    position: relative;
+    animation: 0.5s linear forwards;
+    transform-origin: center center -100px;
+}
+
+.warpper .box div{
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.warpper .box div img {
+    width: 100%;
+    height: 100%;
+}
+
+.warpper .box .reverseside {
+    transform: translate3d(0, 0, -1px)
+}
+
+.warpper .top-in .box .reverseside,
+.warpper .top-out .box .reverseside {
+    transform-origin: center bottom;
+    transform: translate3d(0, -200px, 0) rotate3d(1, 0, 0, 90deg);
+}
+
+.warpper .top-in .box {
+    animation-name: top-in;
+}
+
+.warpper .top-out .box {
+    animation-name: top-out;
+}
+
+@keyframes top-in {
+    from {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+    to {
+        transform: rotate3d(1, 0, 0, -90deg)
+    }
+}
+
+@keyframes top-out {
+    from {
+        transform: rotate3d(1, 0, 0, -90deg)
+    }
+    to {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+}
+
+.warpper .right-in .box .reverseside,
+.warpper .right-out .box .reverseside {
+    transform-origin: left center;
+    transform: translate3d(200px, 0, 0) rotate3d(0, 1, 0, 90deg);
+}
+
+.warpper .right-in .box {
+    animation-name: right-in;
+}
+
+.warpper .right-out .box {
+    animation-name: right-out;
+}
+
+@keyframes right-in {
+    from {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+    to {
+        transform: rotate3d(0, 1, 0, -90deg)
+    }
+}
+
+@keyframes right-out {
+    from {
+        transform: rotate3d(0, 1, 0, -90deg)
+    }
+    to {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+}
+
+.warpper .bottom-in .box .reverseside,
+.warpper .bottom-out .box .reverseside {
+    transform-origin: top center;
+    transform: translate3d(0, 200px, 0) rotate3d(1, 0, 0, -90deg);
+}
+
+.warpper .bottom-in .box {
+    animation-name: bottom-in;
+}
+
+.warpper .bottom-out .box {
+    animation-name: bottom-top;
+}
+
+@keyframes bottom-in {
+    from {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+    to {
+        transform: rotate3d(1, 0, 0, 90deg)
+    }
+}
+
+
+@keyframes bottom-out {
+    from {
+        transform: rotate3d(1, 0, 0, 90deg)
+    }
+    to {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+}
+
+.warpper .left-in .box .reverseside,
+.warpper .left-out .box .reverseside {
+    transform-origin: right center;
+    transform: translate3d(-200px, 0, 0) rotate3d(0, 1, 0, -90deg);
+}
+
+.warpper .left-in .box {
+    animation-name: left-in;
+}
+
+.warpper .left-out .box {
+    animation-name: left-out;
+}
+
+@keyframes left-in {
+    from {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+    to {
+        transform: rotate3d(0, 1, 0, 90deg)
+    }
+}
+
+@keyframes left-out {
+    from {
+        transform: rotate3d(0, 1, 0, 90deg)
+    }
+    to {
+        transform: rotate3d(0, 0, 0, 0)
+    }
+}

@@ -5,11 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>出入方向计算</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            border: 10px solid  transparent;
+            padding: 10px;
+            background-image: url('./1.png');
+            background-repeat: no-repeat;
+            background-clip: padding-box;
+        }
+    </style>
 </head>
 <body>
     <div id="box"> </div>
 </body>
 <script>
-    console.log(Math.atan2(-1, 1) * 180 / Math.PI) // 获取某个坐标点的角度，x 轴为正向，逆时针角度为负数，顺时针角度为正数
+    // 在以矩形或者正方形中心点为原点计算一个点的角度值，Math.atan2(y - height/2, x - width/2) * 180 / Math.PI 
+    // 注意坐标系的x，y轴的方向，以x轴正向为起始，逆时针旋转角度为负数，顺时针旋转角度为正值
+    // 范围计算：将角度值都加上180，然后都除以90，四舍五入，再加上3然后用4取余，变可以得到四个方向的值，上右下左对应的值分别问0，1，2，3
 </script>
 </html>
