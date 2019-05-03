@@ -131,7 +131,7 @@ li {
 }
 
 .warpper .bottom-out .box {
-    animation-name: bottom-top;
+    animation-name: bottom-out;
 }
 
 @keyframes bottom-in {
