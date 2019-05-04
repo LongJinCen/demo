@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>刮刮乐</title>
+    <style>
+    </style>
+</head>
+<body>
+    <canvas id="myCanvas" width="300" height="300"></canvas>
+    <script>
+        var myCanvas = document.getElementById('myCanvas')
+        var ctx = myCanvas.getContext('2d')
+        var w = myCanvas.width,
+            h = myCanvas.height,
+            nowPosition = {},
+            lastPosition = {};
+        function init() {
+            // ctx.globalAlpha = '0.5'
+            ctx.fillStyle = '#ccc'
+            ctx.fillRect(0, 0, w, h)
+            ctx.globalCompositeOperation = 'destination-out'
+            ctx.lineCap = 'round'
+            var img = new Image()
+            img.src = './1.jpg'
+            img.onload = function () {
+                myCanvas.style.backgroundImage = 'url('+ img.src +')'
+                myCanvas.addEventListener('mousedown', downFunc)
+            }
+        }
+        init()
+        function downFunc(e) {
+            lastPosition.x = e.offsetX
+            lastPosition.y = e.offsetY
+            myCanvas.addEventListener('mousemove', moveFunc)
+            document.addEventListener('mouseup', upFunc)
+        }
+        function upFunc(e) {
+            myCanvas.removeEventListener('mousemove', moveFunc)
+            document.removeEventListener('mouseup', upFunc)
+            clearCanvas()
+        }
+        function moveFunc(e) {
+            nowPosition.x = e.offsetX
+            nowPosition.y = e.offsetY
+            ctx.beginPath()
+            ctx.fillStyle = 'red'
+            ctx.arc(nowPosition.x, nowPosition.y, 10, 0, Math.PI * 2, 0)
+            ctx.fill()
+            ctx.moveTo(lastPosition.x, lastPosition.y)
+            ctx.lineTo(nowPosition.x, nowPosition.y)
+            ctx.lineWidth = 20
+            ctx.stroke()
+        }
+
+        function clearCanvas() {
+            var data = ctx.getImageData(0, 0, w, h).data,
+                p = 0,
+                len = data.length;
+            for (let i = 0; i < len; i = i + 4) {
+                if(data[i] === 0) p++
+            }
+            if(p / (len / 4) >= 0.6) {
+                ctx.clearRect(0, 0, w, h)
+            }
+        }
+    </script>
+</body>
+</html>
