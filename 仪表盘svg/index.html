@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>仪表盘svg</title>
+    <style>
+        svg {
+            border: 1px solid #000000;
+        }
+        #path1 {
+            fill: transparent;
+            stroke: #cccccc;
+            stroke-width: 10px;
+            stroke-linecap: round;
+        }
+
+        #path2 {
+            fill: transparent;
+            stroke: orange;
+            stroke-width: 10px;
+            stroke-linecap: round;
+            stroke-dasharray: 550px;
+            stroke-dashoffset: 550px;
+            animation: dashRotate 3s ease 0s infinite
+        }
+        @keyframes dashRotate {
+            from {
+                stroke-dashoffset: 550px;
+            }
+            to {
+                stroke-dashoffset: 0px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg width="500" height="500">
+        <path id="path1" d="M 200 300 A 100 100 0 1 1 300 300"></path>
+        <path id="path2" d="M 200 300 A 100 100 0 1 1 300 300"></path>
+    </svg>
+</body>
+</html>
