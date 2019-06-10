@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端滑屏操作</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <div class="wrap">
+        <ul class="list">
+            <li><a href="#">这是一个很长很长的列表0</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表10</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表20</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表</a></li>
+            <li><a href="#">这是一个很长很长的列表100</a></li>
+        </ul>
+    </div>
+    <script src="./js/transform.js"></script>
+    <script>
+        var wrap = document.querySelector('.wrap'),
+            list = document.querySelector('.list');
+        let startPoint = 0,
+            startTop = 0,
+            movePointY = 0;
+        Transform(list);
+        wrap.addEventListener('touchstart', function (ev){
+            const finger = ev.changedTouches[0]
+            startPoint = finger.pageY;
+            startTop = list.translateY;
+            
+        })
+
+        wrap.addEventListener('touchmove', function (ev) {
+            movePointY = ev.changedTouches[0].pageY - startPoint;
+            list.translateY = startTop + movePointY;
+            ev.preventDefault();
+        })
+    </script>
+</body>
+</html>

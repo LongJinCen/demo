@@ -1,0 +1,24 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.wrap {
+    height: 100vh;
+    overflow: hidden;
+    border: 5px solid #f00;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+.list {
+    transition: 0.3s linear;
+}
+
+.list li {
+    font-size: 24px;
+    line-height: 50px;
+}
