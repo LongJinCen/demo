@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+    <section id="banner">
+        <div id="wrap">
+            <a href="#"><img src="./img/banner_01.jpg"></a>
+            <a href="#"><img src="./img/banner_02.jpg"></a>
+            <a href="#"><img src="./img/banner_03.jpg"></a>
+        </div>
+        <div class="banner-circle">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
+    <script src="./js/transform.js"></script>
+    <script>
+        var wrap = document.getElementById('wrap'),
+            banner = document.getElementById('banner'),
+            circles = document.querySelectorAll('.banner-circle span');
+        let startPoint = 0,
+            imgWidth = banner.offsetWidth,
+            cn = 0,
+            ln = 0,
+            movePoint = 0,
+            eleDis = 0;
+        wrap.innerHTML += wrap.innerHTML;
+        Transform(wrap);
+        banner.addEventListener('touchstart', function(ev) {
+            startPoint = ev.changedTouches[0].pageX;
+            if(cn === 0) {
+                cn = 3;
+            } else if(cn === 5) {
+                cn = 2;
+            }
+            wrap.style.transition = '';
+            wrap.translateX = -imgWidth * cn;
+            eleDis = wrap.translateX;
+        })
+        banner.addEventListener('touchmove', function(ev) {
+            movePoint = ev.changedTouches[0].pageX - startPoint;
+            wrap.translateX = eleDis + movePoint;
+            ev.preventDefault();
+        })
+        banner.addEventListener('touchend', function(ev) {
+
+            if(Math.abs(movePoint) > imgWidth / 6) {
+                if(movePoint < 0) {
+                    cn++;
+                } else if(movePoint > 0) {
+                    cn--;
+                }
+            }
+            wrap.style.transition = '0.3s';
+            wrap.translateX = -imgWidth * cn;
+            movePoint = 0;
+
+            circles[ln].className = 0
+            circles[cn % 3].className = 'active'
+            ln = cn % 3
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+#banner {
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+#wrap {
+    width: 600vw;
+    display: flex;
+}
+
+#wrap > a {
+    width: 100vw;
+}
+
+#wrap > a > img {
+    width: 100%;
+}
+
+.banner-circle {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 3vw;
+    width: 100%;
+}
+
+.banner-circle span {
+    border-radius: 50%;
+    background-color: aliceblue;
+    width: 3vw;
+    height: 3vw;
+    margin: 0px 5px;
+}
+
+span.active {
+    background-color: green;
+}
