@@ -1,26 +1,33 @@
 const handleBlogRouter = (req, res) => {
-    const method = req.method.toLocaleLowerCase(),
-        path = req.url.split('?')[0],
-        query = req.url.split('?')[1];
     // 获取博客列表
-    if(method === 'get' && path === '/api/blog/list') {
-
+    if(req.method === 'get' && req.path === '/api/blog/list') {
+        return {
+            msg: '获取博客列表'
+        }
     }
     // 获取博客详细
-    if(method === 'get' && path === '/api/blog/detail') {
-        
+    if(req.method === 'get' && req.path === '/api/blog/detail') {
+        return {
+            msg: '获取博客详细'
+        }
     }
     // 新建一篇博客
-    if(method === 'post' && path === '/api/blog/new') {
-        
+    if(req.method === 'post' && req.path === '/api/blog/new') {
+        return {
+            msg: '新建一篇博客'
+        }
     }
     // 更新一篇博客
-    if(method === 'post' && path === '/api/blog/update') {
-        
+    if(req.method === 'post' && req.path === '/api/blog/update') {
+        return {
+            msg: '更新一篇博客'
+        }
     }
     // 删除一篇博客
-    if(method === 'post' && path === '/api/blog/del') {
-        
+    if(req.method === 'post' && req.path === '/api/blog/del') {
+        return {
+            msg: '删除一篇博客'
+        }
     }
 }
 
