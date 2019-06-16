@@ -13,7 +13,7 @@ connection.connect(function (err) {
 
 function exec(sql) {
     const promise = new Promise((resolve, reject) => {
-        connection.query('SELECT 1', function (error, results) {
+        connection.query(sql, function (error, results) {
             if (error) {
                 reject(error)
             }

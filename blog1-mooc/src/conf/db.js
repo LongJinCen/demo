@@ -4,20 +4,20 @@ let MYSQL_CONFIG
 
 if (env === 'dev') {
     MYSQL_CONFIG = {
-        host     : 'localhost',
-        user     : 'root',
-        password : 'WAD241820',
-        database : 'myblog',
+        host: 'localhost',
+        user: 'root',
+        password: 'WAD241820',
+        database: 'myblog',
         port: 3306
     }
 }
 
-if(env === 'production') {
+if (env === 'production') {
     MYSQL_CONFIG = {
-        host     : 'localhost',
-        user     : 'root',
-        password : 'WAD241820',
-        database : 'myblog',
+        host: 'localhost',
+        user: 'root',
+        password: 'WAD241820',
+        database: 'myblog',
         port: 3306
     }
 }
