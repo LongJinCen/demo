@@ -7,6 +7,16 @@ const {
     delBlog
 } = require('../controller/blog.js')
 
+// 登陆验证
+
+function loginCheck(req) {
+    if(!req.session.username) {
+        return Promise.resolve(
+            new ErrorModule('尚未登陆')
+        )
+    }
+}
+
 const handleBlogRouter = (req, res) => {
     // 获取博客列表
     if (req.method === 'get' && req.path === '/api/blog/list') {
@@ -25,13 +35,21 @@ const handleBlogRouter = (req, res) => {
     }
     // 新建一篇博客
     if (req.method === 'post' && req.path === '/api/blog/new') {
-        req.author = 'longjincen'
+        const loginCheckResult = loginCheck()
+        if(loginCheckResult) {
+            return loginCheckResult
+        }
+        req.author = req.session.author
         return newBlog(req, req.body).then(data => {
             return new SuccessModule(data, '创建成功')
         })
     }
     // 更新一篇博客
     if (req.method === 'post' && req.path === '/api/blog/update') {
+        const loginCheckResult = loginCheck()
+        if(loginCheckResult) {
+            return loginCheckResult
+        }
         return updateBlog(req.body).then(result => {
             if (result) {
                 return new SuccessModule('更新成功')
@@ -41,7 +59,11 @@ const handleBlogRouter = (req, res) => {
     }
     // 删除一篇博客
     if (req.method === 'post' && req.path === '/api/blog/del') {
-        req.author = 'longjincen'
+        const loginCheckResult = loginCheck()
+        if(loginCheckResult) {
+            return loginCheckResult
+        }
+        req.author = req.session.author
         return delBlog(req).then(result => {
             if (result) {
                 return new SuccessModule('删除成功')
