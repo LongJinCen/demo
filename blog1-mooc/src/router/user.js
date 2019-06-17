@@ -6,7 +6,6 @@ const handleUserRouter = (req, res) => {
     // 登陆
     if(req.method === 'get' && req.path === '/api/user/login') {
         const { username, password } = req.query
-        console.log(username, password, 'log')
         return login(username, password).then(result => {
             if(result) {
                 get(req.userId).then(replay => {

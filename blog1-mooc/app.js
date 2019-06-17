@@ -2,6 +2,7 @@ const handleBlogRouter = require('./src/router/blog.js')
 const handleUserRouter = require('./src/router/user.js')
 const querystring = require('querystring')
 const { set, get } = require('./src/db/redis')
+const { access } = require('./src/util/log')
 
 function getExpireDate() {
     const time = new Date().getTime() + 7 * 24 * 60 * 60 * 1000;
@@ -9,6 +10,7 @@ function getExpireDate() {
 }
 
 const getPostData = (req, res) => {
+    access(`${req.method}---${req.url}---${req.headers['user-agent']}---${new Date()}`)
     const promise = new Promise((resolve, reject) => {
         if (req.method !== 'post') {
             resolve({})
