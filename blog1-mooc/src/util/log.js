@@ -3,7 +3,7 @@ const path = require('path')
 
 //写日志
 function writeLog(writeStream, log) {
-    writeStream.write(log)
+    writeStream.write(log + '\n')
 }
 
 // 生成 write stream
