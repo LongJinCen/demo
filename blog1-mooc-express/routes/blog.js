@@ -35,6 +35,7 @@ router.post('/update', function (req, res, next) {
     updateBlog(req.body).then(result => {
         if (result) {
             res.json(new SuccessModule('更新成功'))
+            return
         }
         res.json(new ErrorModule('更新失败'))
     })
@@ -45,6 +46,7 @@ router.post('/del', function (req, res, next) {
     delBlog(req).then(result => {
         if (result) {
             res.json(new SuccessModule('删除成功'))
+            return
         }
         res.json(new ErrorModule('删除失败'))
     })

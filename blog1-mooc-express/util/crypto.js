@@ -11,7 +11,6 @@ function getPassword(password) {
     return md5(password)
 }
 
-console.log(getPassword('12345'))
 module.exports = {
     getPassword
 }
