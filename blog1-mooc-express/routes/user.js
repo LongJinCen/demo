@@ -4,8 +4,8 @@ const { SuccessModule, ErrorModule } = require('../moudle/resModule.js')
 const { login } = require('../controller/user.js')
 
 /* GET users listing. */
-router.get('/login', function (req, res, next) {
-  const { username, password } = req.query
+router.post('/login', function (req, res, next) {
+  const { username, password } = req.body
   login(username, password).then(result => {
     if (result) {
       req.session.username = username

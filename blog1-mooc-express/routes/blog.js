@@ -1,5 +1,6 @@
 const { SuccessModule, ErrorModule } = require('../moudle/resModule.js')
 const express = require('express')
+const loginCheck = require('../middleware/loginCheck')
 const router = express.Router()
 
 const {
@@ -24,14 +25,14 @@ router.get('/detail', function (req, res, next) {
     })
 })
 
-router.post('/new', function (req, res, next) {
+router.post('/new', loginCheck, function (req, res, next) {
     req.author = req.session.author
     newBlog(req, req.body).then(data => {
         res.json(new SuccessModule(data, '创建成功'))
     })
 })
 
-router.post('/update', function (req, res, next) {
+router.post('/update', loginCheck, function (req, res, next) {
     updateBlog(req.body).then(result => {
         if (result) {
             res.json(new SuccessModule('更新成功'))
@@ -41,7 +42,7 @@ router.post('/update', function (req, res, next) {
     })
 })
 
-router.post('/del', function (req, res, next) {
+router.post('/del', loginCheck, function (req, res, next) {
     req.author = req.session.author
     delBlog(req).then(result => {
         if (result) {
