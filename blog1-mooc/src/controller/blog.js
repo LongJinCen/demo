@@ -1,4 +1,5 @@
 const { exec } = require('../db/mysql')
+const xss = require('xss')
 
 const getList = (author, keyword) => {
     let sql = 'select * from blogs where 1=1 '
@@ -20,6 +21,8 @@ const getDetail = (id) => {
 
 const newBlog = (req, data) => {
     const { title, content } = data
+    title = xss(title)
+    content = xss(content)
     const author = req.author,
         createtime = Date.now();
     const sql = `
