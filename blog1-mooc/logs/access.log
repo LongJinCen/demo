@@ -21,3 +21,7 @@ get---/api/user/login?username=maqian&password=12345---Mozilla/5.0 (Macintosh; I
 get---/api/user/login?username=maqian&password=12345---Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36---Tue Jun 18 2019 12:05:10 GMT+0800 (GMT+08:00)
 get---/api/user/login?username=maqian&password=12345---Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36---Tue Jun 18 2019 12:05:28 GMT+0800 (GMT+08:00)
 get---/api/user/login?username=maqian&password=12345---Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36---Tue Jun 18 2019 12:05:33 GMT+0800 (GMT+08:00)
+post---/api/user/login?name=longjincen&age=12---PostmanRuntime/7.11.0---Tue Jun 18 2019 15:38:22 GMT+0800 (GMT+08:00)
+get---/api/user/login?name=longjincen&age=12---PostmanRuntime/7.11.0---Tue Jun 18 2019 15:38:45 GMT+0800 (GMT+08:00)
+post---/api/user/login?name=longjincen&age=12---PostmanRuntime/7.11.0---Tue Jun 18 2019 15:38:55 GMT+0800 (GMT+08:00)
+post---/api/user/login?name=longjincen&age=12---PostmanRuntime/7.11.0---Tue Jun 18 2019 15:40:09 GMT+0800 (GMT+08:00)

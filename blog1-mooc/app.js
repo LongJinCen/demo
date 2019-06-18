@@ -41,7 +41,6 @@ const serverHandle = (req, res) => {
     req.method = req.method.toLocaleLowerCase(),
         req.path = req.url.split('?')[0],
         req.query = querystring.parse(req.url.split('?')[1]);
-
     // 接收 post data
     getPostData(req, res).then((postData) => {
 
