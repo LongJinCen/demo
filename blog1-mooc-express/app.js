@@ -1,14 +1,24 @@
-var express = require('express');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const path = require('path')
+const fs = require('fs')
 const blogRouter = require('./routes/blog')
 const userRouter = require('./routes/user')
 const session = require('express-session')
 const RedisStore = require('connect-redis')(session);
 const redisClient = require('./db/redis')
-var app = express();
+const app = express();
 
-app.use(logger('dev'));
+const env = process.env.NODE_ENV
+if(env === 'dev') {
+  app.use(logger('dev'));
+} else {
+  const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log', 'access.log'), { flags: 'a' })
+  app.use(logger('combined', {
+    stream: accessLogStream
+  }));
+}
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
