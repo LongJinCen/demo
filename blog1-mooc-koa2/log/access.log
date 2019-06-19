@@ -1,5 +1,1 @@
-::1 - - [19/Jun/2019:00:55:51 +0000] "GET /api/user/login?username=maqian&password=12345 HTTP/1.1" 404 11 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
-::1 - - [19/Jun/2019:00:55:52 +0000] "GET /api/user/login?username=maqian&password=12345 HTTP/1.1" 404 11 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
-::1 - - [19/Jun/2019:00:55:52 +0000] "GET /api/user/login?username=maqian&password=12345 HTTP/1.1" 404 11 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
-::1 - - [19/Jun/2019:00:55:52 +0000] "GET /api/user/login?username=maqian&password=12345 HTTP/1.1" 404 11 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
-::1 - - [19/Jun/2019:00:55:53 +0000] "GET /api/user/login?username=maqian&password=12345 HTTP/1.1" 404 11 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.80 Safari/537.36"
+::1 - - [19/Jun/2019:08:11:51 +0000] "POST /api/blog/new HTTP/1.1" 200 63 "-" "PostmanRuntime/7.11.0"

@@ -6,6 +6,9 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const session = require('koa-generic-session');
 const redisStore = require('koa-redis');
+const morgan = require('koa-morgan')
+const fs = require('fs')
+const path = require('path')
 
 const blog = require('./routes/blog')
 const user = require('./routes/user')
@@ -30,6 +33,16 @@ app.use(session({
     all: '127.0.0.1:6379'
   })
 }));
+// 日志
+const env = process.env.NODE_ENV
+if(env === 'dev') {
+  app.use(morgan('dev'));
+} else {
+  const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log', 'access.log'), { flags: 'a' })
+  app.use(morgan('combined', {
+    stream: accessLogStream
+  }));
+}
 
 // logger
 app.use(async (ctx, next) => {
